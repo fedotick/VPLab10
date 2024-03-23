@@ -93,7 +93,7 @@
             </Grid.RowDefinitions>
 
             <!-- Menu -->
-            <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Visible">
+            <Grid x:Name="gridMenu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
@@ -106,7 +106,7 @@
 
                 <TextBox Grid.Row="0" Width="200" HorizontalContentAlignment="Center"/>
 
-                <Button Grid.Row="2" Width="200" Content="play"/>
+                <Button Grid.Row="2" Width="200" Content="play" Click="ButtonPlay_Click"/>
 
                 <Grid Grid.Row="4" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -123,7 +123,7 @@
             </Grid>
             
             <!-- Main -->
-            <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
+            <Grid x:Name="gridMain" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
@@ -134,12 +134,12 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <ProgressBar Grid.Row="0" Height="20"/>
-                <TextBlock Grid.Row="0" Text="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ProgressBar x:Name="progressBar" Grid.Row="0" Height="20"/>
+                <TextBlock x:Name="textBlockTimeRemaining" Grid.Row="0" Text="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <Image Grid.Row="2" Width="200" Height="200"/>
+                <Image x:Name="imagePreview" Grid.Row="2" Width="200" Height="200"/>
 
-                <TextBox Grid.Row="4" Width="200" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="textBoxAnswer" Grid.Row="4" Width="200" HorizontalContentAlignment="Center" TextChanged="TextBoxAnswer_TextChanged"/>
 
                 <Grid Grid.Row="6" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -148,13 +148,13 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Width="90" Content="stop"/>
-                    <Button Grid.Column="2" Width="90" Content="next"/>
+                    <Button Grid.Column="0" Width="90" Content="stop" Click="ButtonStop_Click"/>
+                    <Button Grid.Column="2" Width="90" Content="next" Click="ButtonNext_Click"/>
                 </Grid>
             </Grid>
 
             <!-- Score -->
-            <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
+            <Grid x:Name="gridScore" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
@@ -163,11 +163,11 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlockAnswers" Grid.Row="0" HorizontalAlignment="Center"/>
 
-                <TextBlock Grid.Row="2" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlockCorrectAnswers" Grid.Row="2" HorizontalAlignment="Center"/>
 
-                <Button Grid.Row="4" Width="90" Content="ok"/>
+                <Button Grid.Row="4" Width="90" Content="ok" Click="ButtonOk_Click"/>
             </Grid>
         </Grid>
     </Grid>
