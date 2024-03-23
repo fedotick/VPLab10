@@ -47,9 +47,12 @@ namespace VPLab10
         private void ButtonPlay_Click(object sender, RoutedEventArgs e)
         {
             gridMenu.Visibility = Visibility.Hidden;
-            gridMain.Visibility = Visibility.Visible;
-
+            
+            UpdateProgressBar();
+            UpdateTimeRemaining();
             NextImage();
+
+            gridMain.Visibility = Visibility.Visible;
 
             timer.Start();
         }
@@ -82,9 +85,6 @@ namespace VPLab10
             timer.Stop();
 
             elapsedTime = 0;
-            UpdateProgressBar();
-            UpdateTimeRemaining();
-
             numberOfAnswers = 0;
             numberOfCorrectAnswers = 0;
         }
@@ -173,6 +173,7 @@ namespace VPLab10
             if (elapsedTime >= totalTime)
             {
                 timer.Stop();
+                elapsedTime = 0;
                 ShowScore();
             }
         }
