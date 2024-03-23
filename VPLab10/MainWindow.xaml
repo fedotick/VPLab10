@@ -77,7 +77,7 @@
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -93,7 +93,7 @@
             </Grid.RowDefinitions>
 
             <!-- Menu -->
-            <Grid x:Name="gridMenu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Visible">
+            <Grid x:Name="gridMenu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
@@ -168,6 +168,36 @@
                 <TextBlock x:Name="textBlockCorrectAnswers" Grid.Row="2" HorizontalAlignment="Center"/>
 
                 <Button Grid.Row="4" Width="90" Content="ok" Click="ButtonOk_Click"/>
+            </Grid>
+
+            <!-- Settings -->
+            <Grid x:Name="gridSettings" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Category"/>
+
+                <ComboBox Grid.Row="2" SelectedIndex="0">
+                    <ComboBoxItem Content="all"/>
+                    <ComboBoxItem Content="food"/>
+                    <ComboBoxItem Content="house"/>
+                    <ComboBoxItem Content="street"/>
+                </ComboBox>
+
+                <TextBlock Grid.Row="4" Text="Time"/>
+
+                <TextBox Grid.Row="6" Width="200"/>
+
+                <Button Grid.Row="8" Width="90" Content="save"/>
             </Grid>
         </Grid>
     </Grid>
