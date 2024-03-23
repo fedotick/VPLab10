@@ -19,3 +19,4 @@ C:\Users\Фёдор Ткачук\OneDrive\CEITI\III year - II semester\Visual Pr
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\III year - II semester\Visual Programming\VPLab10\VPLab10\obj\Debug\net7.0-windows\VPLab10.pdb
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\III year - II semester\Visual Programming\VPLab10\VPLab10\obj\Debug\net7.0-windows\VPLab10.genruntimeconfig.cache
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\III year - II semester\Visual Programming\VPLab10\VPLab10\obj\Debug\net7.0-windows\ref\VPLab10.dll
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\III year - II semester\Visual Programming\VPLab10\VPLab10\obj\Debug\net7.0-windows\VPLab10_Content.g.cs
