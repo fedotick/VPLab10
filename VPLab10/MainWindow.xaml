@@ -93,7 +93,7 @@
             </Grid.RowDefinitions>
 
             <!-- Menu -->
-            <Grid x:Name="gridMenu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
+            <Grid x:Name="gridMenu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
@@ -116,7 +116,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="0" Width="90" Content="rules"/>
-                    <Button Grid.Column="2" Width="90" Content="settings"/>
+                    <Button Grid.Column="2" Width="90" Content="settings" Click="ButtonSettings_Click"/>
                 </Grid>
 
                 <Button Grid.Row="6" Width="200" Content="statistics"/>
@@ -171,7 +171,7 @@
             </Grid>
 
             <!-- Settings -->
-            <Grid x:Name="gridSettings" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Visible">
+            <Grid x:Name="gridSettings" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="5"/>
@@ -186,7 +186,7 @@
 
                 <TextBlock Grid.Row="0" Text="Category"/>
 
-                <ComboBox Grid.Row="2" SelectedIndex="0">
+                <ComboBox Name="comboBoxCategory" Grid.Row="2" SelectedIndex="0">
                     <ComboBoxItem Content="all"/>
                     <ComboBoxItem Content="food"/>
                     <ComboBoxItem Content="house"/>
@@ -195,9 +195,9 @@
 
                 <TextBlock Grid.Row="4" Text="Time"/>
 
-                <TextBox Grid.Row="6" Width="200"/>
+                <TextBox x:Name="textBoxTime" Grid.Row="6" Width="200"/>
 
-                <Button Grid.Row="8" Width="90" Content="save"/>
+                <Button Grid.Row="8" Width="90" Content="save" Click="ButtonSave_Click"/>
             </Grid>
         </Grid>
     </Grid>

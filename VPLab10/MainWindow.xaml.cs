@@ -54,6 +54,26 @@ namespace VPLab10
             timer.Start();
         }
 
+        private void ButtonSettings_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Visibility = Visibility.Hidden;
+            gridSettings.Visibility = Visibility.Visible;
+
+            comboBoxCategory.Text = category;
+            textBoxTime.Text = totalTime.ToString();
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            gridSettings.Visibility = Visibility.Hidden;
+            
+            category = comboBoxCategory.Text;
+            InitializeWords();
+            totalTime = Convert.ToInt16(textBoxTime.Text);
+
+            gridMenu.Visibility = Visibility.Visible;
+        }
+
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
             gridMenu.Visibility = Visibility.Visible;
