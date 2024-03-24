@@ -24,13 +24,14 @@ using System.Windows.Threading;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Runtime.ConstrainedExecution;
+using System.ComponentModel;
 
 namespace VPLab10
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private string currentDirectory = Directory.GetCurrentDirectory();
         private Random random = new Random();
@@ -109,38 +110,66 @@ namespace VPLab10
             gridChart.Visibility = Visibility.Visible;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private SeriesCollection seriesCollection;
+
+        public SeriesCollection SeriesCollection
+        {
+            get { return seriesCollection; }
+            set
+            {
+                seriesCollection = value;
+                OnPropertyChanged("SeriesCollection");
+            }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private void CreateChart()
         {
-            // List<string> userNames = new List<string>();
-            SeriesCollection = new SeriesCollection();
+            Dictionary<string, double> usersStatistics = new Dictionary<string, double>();
 
             foreach (var user in users)
             {
                 string userName = user.Key;
-                // userNames.Add(userName);
 
-                List<Dictionary<string, int>> userStatistics = user.Value;
-
-                foreach (var userStatisticsItems in userStatistics)
+                foreach (var userStatistics in user.Value)
                 {
-                    double responsesPerSecond = Math.Round(Convert.ToDouble(userStatisticsItems["correctAnswers"]) / userStatisticsItems["time"], 2);
+                    double responsesPerSecond = Convert.ToDouble(userStatistics["correctAnswers"]) / userStatistics["time"];
 
-                    SeriesCollection.Add(new ColumnSeries
+                    if (usersStatistics.ContainsKey(userName))
                     {
-                        Title = userName,
-                        Values = new ChartValues<double> { responsesPerSecond }
-                    });
+                        usersStatistics[userName] += responsesPerSecond;
+                        usersStatistics[userName] /= 2;
+                    }
+                    else
+                    {
+                        usersStatistics[userName] = responsesPerSecond;
+                    }
                 }
             }
 
-            // Labels = userNames.ToArray();
+            SeriesCollection = new SeriesCollection();
+
+            foreach (var userStatistics in usersStatistics) 
+            {
+                SeriesCollection.Add(new ColumnSeries
+                {
+                    Title = userStatistics.Key,
+                    Values = new ChartValues<double> { userStatistics.Value }
+                });     
+            }
+
             Labels = new[] { "" };
             Formatter = value => value.ToString("N");
 
             DataContext = this;
         }
 
-        public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
 
@@ -216,7 +245,7 @@ namespace VPLab10
 
             if (userName == "")
             {
-                userName = "guest";
+                userName = "player";
             }
 
             using (StreamWriter writer = new StreamWriter(currentDirectory + "/statistics.txt", true))
