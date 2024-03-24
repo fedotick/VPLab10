@@ -115,7 +115,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Width="90" Content="rules"/>
+                    <Button Grid.Column="0" Width="90" Content="rules" Click="ButtonRules_Click"/>
                     <Button Grid.Column="2" Width="90" Content="settings" Click="ButtonSettings_Click"/>
                 </Grid>
 
@@ -211,10 +211,10 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Text="Rules"/>
-                
-                <TextBlock Grid.Row="2" Width="200" TextWrapping="Wrap" Text="Random pictures appear on the screen. Your task is to write what is shown in the picture."/>
 
-                <Button Grid.Row="4" Width="90" Content="clear"/>
+                <TextBlock Grid.Row="2" Width="200" TextWrapping="Wrap" TextAlignment="Justify" Text="Random pictures appear on the screen. Your task is to write what is shown in the picture."/>
+
+                <Button Grid.Row="4" Width="90" Content="clear" Click="ButtonClear_Click"/>
             </Grid>
         </Grid>
     </Grid>

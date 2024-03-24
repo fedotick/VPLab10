@@ -57,6 +57,18 @@ namespace VPLab10
             timer.Start();
         }
 
+        private void ButtonRules_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Visibility = Visibility.Hidden;
+            gridRules.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            gridRules.Visibility = Visibility.Hidden;
+            gridMenu.Visibility = Visibility.Visible;
+        }
+
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
             gridMenu.Visibility = Visibility.Hidden;
