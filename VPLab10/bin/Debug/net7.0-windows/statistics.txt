@@ -1,3 +1,9 @@
 FEDOT|3|2|10
 player|2|1|10
 guest|0|0|4
+guest|0|0|1
+player|0|0|1
+player|0|1|1
+pl|0|0|1
+pl|0|1|2
+ffffffffff|0|0|1

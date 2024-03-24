@@ -20,6 +20,7 @@
             <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="CaretBrush" Value="White"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -92,7 +93,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBox x:Name="textBoxUserName" Grid.Row="0" Width="200" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="textBoxUserName" Grid.Row="0" Width="200" HorizontalContentAlignment="Center" Text="player"/>
 
             <Button Grid.Row="2" Width="200" Content="play" Click="ButtonPlay_Click"/>
 
@@ -122,7 +123,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ProgressBar x:Name="progressBar" Grid.Row="0" Height="20"/>
+            <ProgressBar x:Name="progressBar" Grid.Row="0" Width="200" Height="20"/>
             <TextBlock x:Name="textBlockTimeRemaining" Grid.Row="0" Text="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <Image x:Name="imagePreview" Grid.Row="2" Width="200" Height="200"/>
@@ -172,16 +173,16 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Category"/>
+            <TextBlock Grid.Row="0" Width="200" Text="Category"/>
 
-            <ComboBox Name="comboBoxCategory" Grid.Row="2" SelectedIndex="0">
+            <ComboBox Name="comboBoxCategory" Grid.Row="2" Width="200" SelectedIndex="0">
                 <ComboBoxItem Content="all"/>
                 <ComboBoxItem Content="food"/>
                 <ComboBoxItem Content="house"/>
                 <ComboBoxItem Content="street"/>
             </ComboBox>
 
-            <TextBlock Grid.Row="4" Text="Time"/>
+            <TextBlock Grid.Row="4" Width="200" Text="Time"/>
 
             <TextBox x:Name="textBoxTime" Grid.Row="6" Width="200"/>
 
@@ -212,7 +213,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
-            <lvc:CartesianChart Grid.Row="0" Series="{Binding SeriesCollection}" LegendLocation="Left">
+            <lvc:CartesianChart Grid.Row="0" Series="{Binding SeriesCollection}" Foreground="White" LegendLocation="Left">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="Users" Labels="{Binding Labels}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
