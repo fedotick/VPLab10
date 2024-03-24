@@ -104,7 +104,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBox Grid.Row="0" Width="200" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="textBoxUserName" Grid.Row="0" Width="200" HorizontalContentAlignment="Center"/>
 
                 <Button Grid.Row="2" Width="200" Content="play" Click="ButtonPlay_Click"/>
 

@@ -34,7 +34,7 @@ namespace VPLab10
         private int totalTime = 60; 
         private int elapsedTime = 0;
 
-        private int numberOfAnswers = -1;
+        private int numberOfAnswers = 0;
         private int numberOfCorrectAnswers = 0;
 
         public MainWindow()
@@ -110,9 +110,27 @@ namespace VPLab10
         {
             gridScore.Visibility = Visibility.Hidden;
 
-            // Сохранение статистики
+            SaveStatistics();
+
+            numberOfAnswers = 0;
+            numberOfCorrectAnswers = 0;
 
             gridMenu.Visibility = Visibility.Visible;
+        }
+
+        private void SaveStatistics()
+        {
+            string userName = textBoxUserName.Text;
+
+            if (userName == "")
+            {
+                userName = "guest";
+            }
+
+            using (StreamWriter writer = new StreamWriter(currentDirectory + "/statistics.txt", true))
+            {
+                writer.WriteLine($"{userName}|{numberOfCorrectAnswers}|{numberOfAnswers - numberOfCorrectAnswers}");
+            }
         }
 
         private void TextBoxAnswer_TextChanged(object sender, TextChangedEventArgs e)
@@ -186,6 +204,7 @@ namespace VPLab10
             {
                 timer.Stop();
                 elapsedTime = 0;
+                numberOfAnswers--;
                 ShowScore();
             }
         }
