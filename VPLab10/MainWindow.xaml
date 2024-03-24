@@ -199,6 +199,23 @@
 
                 <Button Grid.Row="8" Width="90" Content="save" Click="ButtonSave_Click"/>
             </Grid>
+            
+            <!-- Rules -->
+            <Grid x:Name="gridRules" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Text="Rules"/>
+                
+                <TextBlock Grid.Row="2" Width="200" TextWrapping="Wrap" Text="Random pictures appear on the screen. Your task is to write what is shown in the picture."/>
+
+                <Button Grid.Row="4" Width="90" Content="clear"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
