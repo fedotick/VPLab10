@@ -228,11 +228,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Фёдор Ткачук\\OneDrive\\CEITI\\III year - II semester\\Visual Programming\\VPLab10\\VPLab10\\VPLab10.csproj",
+      "projectUniqueName": "C:\\Users\\Фёдор Ткачук\\OneDrive\\CEITI\\III year - II semester\\Visual Programming\\Lab10\\VPLab10\\VPLab10\\VPLab10.csproj",
       "projectName": "VPLab10",
-      "projectPath": "C:\\Users\\Фёдор Ткачук\\OneDrive\\CEITI\\III year - II semester\\Visual Programming\\VPLab10\\VPLab10\\VPLab10.csproj",
+      "projectPath": "C:\\Users\\Фёдор Ткачук\\OneDrive\\CEITI\\III year - II semester\\Visual Programming\\Lab10\\VPLab10\\VPLab10\\VPLab10.csproj",
       "packagesPath": "C:\\Users\\Фёдор Ткачук\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Фёдор Ткачук\\OneDrive\\CEITI\\III year - II semester\\Visual Programming\\VPLab10\\VPLab10\\obj\\",
+      "outputPath": "C:\\Users\\Фёдор Ткачук\\OneDrive\\CEITI\\III year - II semester\\Visual Programming\\Lab10\\VPLab10\\VPLab10\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
