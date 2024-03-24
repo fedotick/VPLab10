@@ -18,5 +18,4 @@ Create a game:
 ![image](https://github.com/fedotick/VPLab10/assets/63405911/5420d38f-c1e8-4159-beee-e2419e2fb2bd)
 ![image](https://github.com/fedotick/VPLab10/assets/63405911/b836173b-db50-4a25-8948-8342905c34f3)
 ![image](https://github.com/fedotick/VPLab10/assets/63405911/8aa6cd00-e963-4bf7-bea6-3321664a600d)
-![image](https://github.com/fedotick/VPLab10/assets/63405911/24c1500c-5504-4fef-ac92-e891f4670cbf)
-
+![image](https://github.com/fedotick/VPLab10/assets/63405911/c733d44c-3064-43ce-8f57-8d752adb523e)
