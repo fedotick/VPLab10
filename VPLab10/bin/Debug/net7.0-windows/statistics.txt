@@ -1,0 +1,3 @@
+FEDOT|3|2|10
+player|2|1|10
+guest|0|0|4

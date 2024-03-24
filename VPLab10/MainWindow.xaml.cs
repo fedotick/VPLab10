@@ -1,7 +1,14 @@
-﻿using System;
+﻿using LiveCharts.Wpf;
+using LiveCharts;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +23,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.ConstrainedExecution;
 
 namespace VPLab10
 {
@@ -36,6 +44,8 @@ namespace VPLab10
 
         private int numberOfAnswers = 0;
         private int numberOfCorrectAnswers = 0;
+
+        private Dictionary<string, List<Dictionary<string, int>>> users;
 
         public MainWindow()
         {
@@ -89,6 +99,88 @@ namespace VPLab10
             gridMenu.Visibility = Visibility.Visible;
         }
 
+        private void ButtonStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Visibility = Visibility.Hidden;
+
+            ReadStatistics();
+            CreateChart();
+
+            gridChart.Visibility = Visibility.Visible;
+        }
+
+        private void CreateChart()
+        {
+            // List<string> userNames = new List<string>();
+            SeriesCollection = new SeriesCollection();
+
+            foreach (var user in users)
+            {
+                string userName = user.Key;
+                // userNames.Add(userName);
+
+                List<Dictionary<string, int>> userStatistics = user.Value;
+
+                foreach (var userStatisticsItems in userStatistics)
+                {
+                    double responsesPerSecond = Math.Round(Convert.ToDouble(userStatisticsItems["correctAnswers"]) / userStatisticsItems["time"], 2);
+
+                    SeriesCollection.Add(new ColumnSeries
+                    {
+                        Title = userName,
+                        Values = new ChartValues<double> { responsesPerSecond }
+                    });
+                }
+            }
+
+            // Labels = userNames.ToArray();
+            Labels = new[] { "" };
+            Formatter = value => value.ToString("N");
+
+            DataContext = this;
+        }
+
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
+
+        private void ReadStatistics()
+        {
+            users = new Dictionary<string, List<Dictionary<string, int>>>();
+
+            var lines = File.ReadAllLines(currentDirectory + "/statistics.txt");
+
+            foreach (var line in lines)
+            {
+                var values = line.Split('|');
+
+                string userName = values[0];
+                int correctAnswers = int.Parse(values[1]);
+                int wrongAnswers = int.Parse(values[2]);
+                int time = int.Parse(values[3]);
+
+                if (!users.ContainsKey(userName))
+                {
+                    users[userName] = new List<Dictionary<string, int>>();
+                }
+
+                Dictionary<string, int> statisticsItem = new Dictionary<string, int>
+                {
+                    { "correctAnswers", correctAnswers },
+                    { "wrongAnswers", wrongAnswers },
+                    { "time", time },
+                };
+
+                users[userName].Add(statisticsItem);
+            }
+        }
+
+        private void ButtonBack_Click(object sender, EventArgs e)
+        {
+            gridChart.Visibility = Visibility.Hidden;
+            gridMenu.Visibility = Visibility.Visible;
+        }
+
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
             gridMenu.Visibility = Visibility.Visible;
@@ -129,7 +221,7 @@ namespace VPLab10
 
             using (StreamWriter writer = new StreamWriter(currentDirectory + "/statistics.txt", true))
             {
-                writer.WriteLine($"{userName}|{numberOfCorrectAnswers}|{numberOfAnswers - numberOfCorrectAnswers}");
+                writer.WriteLine($"{userName}|{numberOfCorrectAnswers}|{numberOfAnswers - numberOfCorrectAnswers}|{totalTime}");
             }
         }
 
